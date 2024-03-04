@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "{{ include "cobol-guest-book-webapp.fullname" . }}-test-connection"
+  labels:
+    {{- include "cobol-guest-book-webapp.labels" . | nindent 4 }}
+  annotations:
+    "helm.sh/hook": test-success
+spec:
+  containers:
+    - name: wget
+      image: busybox
+      command: ['wget']
+      args: ['{{ include "cobol-guest-book-webapp.fullname" . }}:{{ .Values.service.port }}']
+  restartPolicy: Never

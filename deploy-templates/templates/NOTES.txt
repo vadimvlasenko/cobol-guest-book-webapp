@@ -1,0 +1,1 @@
+1. Application cobol-guest-book-webapp has been successfully deployed!!
